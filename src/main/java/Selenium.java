@@ -62,7 +62,7 @@ public class Selenium {
                     System.out.println("Wrong username or password try again!");
                 } else {
                     try {
-                        WebElement userMenu = driver.findElements(By.className("dropdown")).get(0);
+                        WebElement userMenu = driver.findElements(By.className("dropdown")).get(Def.USER_MENU);
                         if (userMenu != null)
                             userMenu.click();
                         WebElement coursesUpdates = driver.findElement(By.id("actionmenuaction-1"));
@@ -72,15 +72,15 @@ public class Selenium {
                         if (coursesUpdates != null)
                             coursesUpdates.click();
                         List<WebElement> filters = driver.findElements(By.className("dropdown-item"));
-                        WebElement allCoursesFilter = filters.get(8);
+                            WebElement allCoursesFilter = filters.get(Def.ALL_COURSES_FILTER);
                         allCoursesFilter.click();
                         WebElement cardDropFilter = driver.findElement(By.id("displaydropdown"));
                         cardDropFilter.click();
-                        WebElement cardFilter = filters.get(17);
+                        WebElement cardFilter = filters.get(Def.CARD_FILTER);
                         cardFilter.click();
                         WebElement sortingFilter = driver.findElement(By.id("sortingdropdown"));
                         sortingFilter.click();
-                        WebElement courseNameFilter = filters.get(14);
+                        WebElement courseNameFilter = filters.get(Def.COURSE_NAME_FILTER);
                         courseNameFilter.click();
 
                         TimeUnit.SECONDS.sleep(2);
@@ -102,7 +102,7 @@ public class Selenium {
                         System.out.println("Your courses are:");
                         TimeUnit.SECONDS.sleep(1);
 
-                        for (int i = 0; i < coursesTitle.size() - 3; i++) {
+                        for (int i = 0; i < coursesTitle.size() - Def.RECENTLY_VIEWED_COURSES; i++) {
                             System.out.println(coursesTitle.get(i) + " :" + i);
                         }
                         System.out.println();
@@ -111,19 +111,19 @@ public class Selenium {
                         int userCourse;
                         try {
                             userCourse = intScanner.nextInt();
-                            if (userCourse >= coursesTitle.size() - 3 || userCourse < 0) {
+                            if (userCourse >= coursesTitle.size()-Def.RECENTLY_VIEWED_COURSES || userCourse < 0) {
                                 System.out.println("This course does not exist Try again");
                                 userCourse = intScanner.nextInt();
                             }
                             driver.get((coursesUrl.get(userCourse)));
                             TimeUnit.SECONDS.sleep(3);
-                            userMenu = driver.findElements(By.className("dropdown")).get(0);
+                            userMenu = driver.findElements(By.className("dropdown")).get(Def.USER_MENU);
                             if (userMenu != null)
                                 userMenu.click();
                             WebElement logoutMoodle = driver.findElement(By.id("actionmenuaction-6"));
                             if (logoutMoodle != null)
                                 logoutMoodle.click();
-                            WebElement logoutPersonalInfo = driver.findElements(By.tagName("li")).get(1);
+                            WebElement logoutPersonalInfo = driver.findElements(By.tagName("li")).get(Def.LOGOUT_PERSONAL_INFO);
                             if (logoutPersonalInfo != null){
                                 logoutPersonalInfo.click();
                                 flag=true;
