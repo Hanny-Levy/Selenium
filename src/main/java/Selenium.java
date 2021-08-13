@@ -25,6 +25,7 @@ public class Selenium {
             System.setProperty("webdriver.chrome.driver",
                     "C:\\Users\\חני\\Desktop\\chromedriver.exe");
             ChromeDriver driver = new ChromeDriver();
+            driver.manage().window().maximize();
             driver.get("https://www.aac.ac.il/");
             try {
                 List<WebElement> personalInfo = driver.findElements(By.tagName("li"));
