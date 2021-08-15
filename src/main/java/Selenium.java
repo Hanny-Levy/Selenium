@@ -123,6 +123,7 @@ public class Selenium {
                             WebElement logoutMoodle = driver.findElement(By.id("actionmenuaction-6"));
                             if (logoutMoodle != null)
                                 logoutMoodle.click();
+                            TimeUnit.SECONDS.sleep(2);
                             WebElement logoutPersonalInfo = driver.findElements(By.tagName("li")).get(Def.LOGOUT_PERSONAL_INFO);
                             if (logoutPersonalInfo != null){
                                 logoutPersonalInfo.click();
